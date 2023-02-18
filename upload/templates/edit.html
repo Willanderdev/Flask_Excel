@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% block conteudo %}
+
+    <h1 style="text-align: center;">Editar {{table.nome}}</h1>
+    <br><br>
+    <form action="/Update/{{table.id}}" class="container" method="post">
+        <div class="row">
+            <div class="col-md-2">
+                <span >Nome</span>
+                <br>
+                <input type="tex" name="nome" id="nome" placeholder="nome" class="form-control" value = "{{table.nome}}">
+            </div>
+            <div class="col-md-2">
+                <span >Cnpj_cpf</span>
+                <br>
+                <input type="tex" name="cnpj_cpf" id="cnpj_cpf" placeholder="cnpj_cpf" class="form-control" value = "{{table.cnpj_cpf}}">
+            </div>
+            <div class="col-md-2">
+                <span >Valor</span>
+                <br>
+                <input type="tex" name="valor" id="valor" placeholder="valor" class="form-control" value = "{{table.valor}}">
+            </div>
+            <div class="col-md-2">
+                <span >Modalidade</span>
+                <br>
+                <input type="tex" name="modalidade" id="modalidade" placeholder="modalidade" class="form-control" value = "{{table.modalidade}}">
+            </div>
+            <div class="col-md-2">
+                <span >Data_de_pagamento</span>
+                <br>
+                <input type="tex" name="data_de_pagamento" id="data_de_pagamento" placeholder="data_de_pagamento" class="form-control" value = "{{table.data_de_pagamento}}">
+            </div>
+            <div class="col-md-2">
+                <span>Quantidade_de_parcelas</span>
+                <br>
+                <input type="tex" name="quantidade_de_parcelas" id="quantidade_de_parcelas" placeholder="quantidade_de_parcelas" class="form-control" value = "{{table.quantidade_de_parcelas}}">
+            </div>
+            
+        </div>
+        <br>
+        <div class="row col-xs-12">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+        </div>
+    </form>
+{% endblock conteudo %}

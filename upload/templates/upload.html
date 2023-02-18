@@ -1,0 +1,89 @@
+{% extends "index.html" %}
+{% block conteudo %}
+
+    <script type="text/javascript">
+        var removerProduto = (function (elemento) {
+            $(elemento).closest('tr').remove();
+        });
+    </script>
+    <h1>Tabela</h1>
+    <div class="container">
+
+        <form method="POST" action="#" enctype="multipart/form-data">
+            <label for="file">Selecione um arquivo Excel:</label>
+            <input type="file" id="file" name="file" accept=".xlsx">
+            <input type="submit" value="upload">
+        </form>
+        <div class="container">
+            <div class="row">
+                <form action="{{ url_for('Add') }}" class="container" method="POST">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>
+                                nome
+                            </th>
+                            <th>
+                                cnpj_cpf
+                            </th>
+                            <th>
+                                valor
+                            </th>
+                            <th>
+                                modalidade
+                            </th>
+                            <th>
+                                data de pagamento
+                            </th>
+                            <th>
+                                quantidade de parcelas
+                            </th>
+                            <th>
+                                ações
+                            </th>
+
+                        </thead>
+
+
+
+                        <tbody id="tbody">
+                            {% for i in data %}
+                            <tr>
+                                <td>
+                                    <input type="text" name="nome" value="{{ i['nome'] }}">
+                                </td>
+                                <td>
+                                    <input type="text" name="cnpj_cpf" value="{{ i['cnpj_cpf'] }}">
+                                </td>
+                                <td>
+                                    <input type="text" name="valor" value="{{ i['valor'] }}">
+                                </td>
+                                <td>
+                                    <input type="text" name="modalidade" value="{{ i['modalidade'] }}">
+                                </td>
+                                <td>
+                                    <input type="text" name="data_de_pagamento" value="{{ i['data_de_pagamento'] }}">
+                                </td>
+                                <td>
+                                    <input type="text" name="quantidade_de_parcelas"
+                                        value="{{ i['quantidade_de_parcelas'] }}">
+                                </td>
+                               <td >
+                                    <a  onclick="removerProduto(this);" href="#">del</a>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock conteudo %}

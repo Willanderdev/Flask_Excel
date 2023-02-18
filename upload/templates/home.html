@@ -1,0 +1,83 @@
+{% extends "index.html" %}
+{% block conteudo %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <H1>Tabelas</H1>
+        </div>
+        <br><br>
+        <div class="col-12">
+            <a href="/upload">Adcionar Tabela</a>
+        </div>
+        <br><br><br>
+
+        <div class="col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                    <th>
+                        nome
+                    </th>
+                    <th>
+                        cnpj_cpf
+                    </th>
+                    <th>
+                        valor
+                    </th>
+                    <th>
+                        modalidade
+                    </th>
+                    <th>
+                        data de pagamento
+                    </th>
+                    <th>
+                        quantidade de parcelas
+                    </th>
+                    <th>
+                        ações
+                    </th>
+
+                </thead>
+
+                <tbody id="tbody">
+                    {% for i in banda %}
+                    <tr>
+                        <td>
+                            <input type="text" name="nome" value="{{ i.nome }}">
+                        </td>
+                        <td>
+                            <input type="text" name="cnpj_cpf" value="{{ i.cnpj_cpf}}">
+                        </td>
+                        <td>
+                            <input type="text" name="valor" value="{{ i.valor }}">
+                        </td>
+                        <td>
+                            <input type="text" name="modalidade" value="{{ i.modalidade }}">
+                        </td>
+                        <td>
+                            <input type="text" name="data_de_pagamento" value="{{ i.data_de_pagamento }}">
+                        </td>
+                        <td>
+                            <input type="text" name="quantidade_de_parcelas" value="{{ i.quantidade_de_parcelas }}">
+                        </td>
+                        <td>
+                            <div>
+                                <a href="/Del/{{i.id}}"
+                                    onclick="return confirm('deseja realmente excluir este registro?')">del</a>
+
+                                <a href="/Update/{{i.id}}">edit</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+{% endblock conteudo %}
